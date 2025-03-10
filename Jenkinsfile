@@ -6,15 +6,15 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    echo '#include <iostream>' > PES2UG22CS051.cpp
-                    echo 'using namespace std;' >> PES2UG22CS051.cpp
-                    echo 'int main() {' >> PES2UG22CS051.cpp
-                    echo '    cout << "Hello, Jenkins Pipeline!" << endl;' >> PES2UG22CS051.cpp
-                    echo '    return 0;' >> PES2UG22CS051.cpp
-                    echo '}' >> PES2UG22CS051.cpp
+                    echo '#include <iostream>' > PES2UG22CS051-1.cpp
+                    echo 'using namespace std;' >> PES2UG22CS051-1.cpp
+                    echo 'int main() {' >> PES2UG22CS051-1.cpp
+                    echo '    cout << "Hello, Jenkins Pipeline!" << endl;' >> PES2UG22CS051-1.cpp
+                    echo '    return 0;' >> PES2UG22CS051-1.cpp
+                    echo '}' >> PES2UG22CS051-1.cpp
                     '''
-                    sh 'git add PES2UG22CS051.cpp'
-                    sh 'git commit -m "Added C++ file PES2UG22CS051.cpp"'
+                    sh 'git add PES2UG22CS051-1.cpp'
+                    sh 'git commit -m "Added C++ file PES2UG22CS051-1.cpp"'
                     sh 'git push origin main'
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'g++ -o PES2UG22CS051 PES2UG22CS051.cpp'
+                    sh 'g++ -o PES2UG22CS051-1 PES2UG22CS051-1.cpp'
                     echo 'Build Stage Successful'
                 }
             }
@@ -32,7 +32,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh './PES2UG22CS051'
+                    sh './PES2UG22CS051-1'
                     echo 'Test Stage Successful'
                 }
             }
